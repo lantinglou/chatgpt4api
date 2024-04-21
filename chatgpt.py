@@ -24,6 +24,7 @@ credential_check=False,
 verbose=True,
 user_data_dir=profile_path
 )
-if chathead.switch_model():
-    response = chathead.interact("你是什么版本的GPT")
-    print(response)
+if chathead.switch_model("default")==False:
+    print("switch model failed")
+response = chathead.interact("你是什么版本的GPT")
+print(response)
