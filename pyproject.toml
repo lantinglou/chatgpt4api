@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "chatgpt4api"
+version = "0.1.0"
+description = "A selenium based chatgpt4 API, You need a chatgpt4 account and manual login first time."
+authors = ["lantinglou <679506@qq.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">3.8 <3.12"
+talkingheads = {git = "https://github.com/lantinglou/TalkingHeads.git"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
