@@ -1,13 +1,12 @@
 import socket, threading, time, subprocess, platform, os
 
 class GetProfile:
-
-    def __init__(self, profile_path=None, relogin=False):
+    def __init__(self, relogin=False):
         """
         This constructor initializes the class by setting the profile path and login requirements,
         and performs conditional login if necessary.
         """
-        self.profile_path = profile_path
+        self.profile_path = os.path.join(os.path.expanduser('~'), '.profile')
         self.conditional_login(relogin)
 
     def conditional_login(self, relogin: bool = False):
@@ -23,7 +22,7 @@ class GetProfile:
             url = r"https://chat.openai.com"
             free_port = self.find_available_port()
             self.launch_chrome_with_remote_debugging(free_port, url)
-            print("You have 90 seconds to complete the login and switch the default model, then Chrome will exit.")
+            print("You have 90s to manually pass verification or complete the login and switch default model, then Chrome will exit.")
             time.sleep(90)
             self.close_chrome()
 
