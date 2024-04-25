@@ -1,17 +1,17 @@
 import socket, threading, time, subprocess, platform, os
 
 class GetProfile:
-    def __init__(self, relogin=False):
+    def __init__(self, login: bool=True):
         """
         This constructor initializes the class by setting the profile path and login requirements,
         and performs conditional login if necessary.
         """
         self.profile_path = os.path.join(os.path.expanduser('~'), '.profile')
-        self.conditional_login(relogin)
+        self.get_profile(login)
 
-    def conditional_login(self, relogin: bool = False):
-        """Conditionally launches Chrome based on the login requirement and profile existence."""
-        if not os.path.exists(self.profile_path) or relogin:
+    def get_profile(self, login: bool=True):
+        """Conditionally launches Chrome based on the profile existence."""
+        if not os.path.exists(self.profile_path):
             system = platform.system()
             if system == 'Windows':
                 self.chrome_path = r'"C:\Program Files\Google\Chrome\Application\chrome.exe"'
@@ -22,9 +22,14 @@ class GetProfile:
             url = r"https://chat.openai.com"
             free_port = self.find_available_port()
             self.launch_chrome_with_remote_debugging(free_port, url)
-            print("You have 90s to manually pass verification or complete the login and switch default model, then Chrome will exit.")
-            time.sleep(90)
-            self.close_chrome()
+            if login == False:
+                print("You have 30s pass the verification, then chrome will exit.")
+                time.sleep(30)
+                self.close_chrome()
+            else:
+                print("You have 90s to login and switch default model, then chrome will exit.")
+                time.sleep(90)
+                self.close_chrome()
 
     @staticmethod
     def find_available_port():

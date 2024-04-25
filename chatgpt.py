@@ -1,27 +1,23 @@
 from talkingheads import ChatGPTClient
 from library.getprofile import GetProfile
 
+"""First, you need to get your profile."""
+"""If login expired or pass verification failed, delete .profile in your home directory and run again."""
 
-use_account = True  # False only can use GPT-3.5, if have verification set Ture manual pass it, No user pass input required.
+profile= GetProfile(
+    login=True,
+)
 
-if use_account:
-    profile= GetProfile(relogin=False)# Only your profile cookie has expired. You need to set relogin = True.
-    profile_path = profile.profile_path
-    chathead = ChatGPTClient(
-    # headless=False,
-    incognito=False,
-    verbose=True,
-    user_data_dir=profile_path
-    )
-    if chathead.switch_model()==False:
-        print("switch model failed")
+profile_path = profile.profile_path
+chathead = ChatGPTClient(
+headless=False,
+incognito=False,
+verbose=True,
+# uc_params = {"driver_executable_path":"/Users/lantinglou/Library/Application Support/undetected_chromedriver/undetected_chromedriver"}, #aviod download uc erverytime
+user_data_dir=profile_path
+)
+chathead.switch_model() #  either GPT-3.5 or GPT-4, empty for default of your account
 
-else:
-    chathead = ChatGPTClient(
-    # headless=False,
-    incognito=False,
-    verbose=True,
-    )
-
-response = chathead.interact("你是什么版本的GPT")
+prompt = "你是什么版本的GPT"
+response = chathead.interact(prompt)
 print(response)

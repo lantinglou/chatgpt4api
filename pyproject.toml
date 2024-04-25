@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">3.8 <3.12"
 talkingheads = {git = "https://github.com/lantinglou/TalkingHeads.git"}
+flask = "^3.0.3"
 
 
 [build-system]
