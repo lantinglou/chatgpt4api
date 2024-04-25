@@ -8,6 +8,7 @@ if use_account:
     profile= GetProfile(relogin=False)# Only your profile cookie has expired. You need to set relogin = True.
     profile_path = profile.profile_path
     chathead = ChatGPTClient(
+    # headless=False,
     incognito=False,
     verbose=True,
     user_data_dir=profile_path
@@ -17,6 +18,7 @@ if use_account:
 
 else:
     chathead = ChatGPTClient(
+    # headless=False,
     incognito=False,
     verbose=True,
     )
