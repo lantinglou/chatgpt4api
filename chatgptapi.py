@@ -9,6 +9,7 @@ def process_prompt(prompt):
     # headless=False,
     verbose=True,
     # uc_params = {"driver_executable_path":r"C:\Users\Light\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\Roaming\undetected_chromedriver\undetected_chromedriver.exe"},
+    uc_params = {"driver_executable_path":r"/home/light/.local/share/undetected_chromedriver/undetected_chromedriver"},
     user_data_dir=profile_path
     )
     chathead.switch_model()

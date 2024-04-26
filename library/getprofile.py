@@ -6,7 +6,7 @@ class GetProfile:
         This constructor initializes the class by setting the profile path and login requirements,
         and performs conditional login if necessary.
         """
-        self.profile_path = os.path.join(os.path.expanduser('~'), '.profile')
+        self.profile_path = os.path.join(os.path.expanduser('~'), 'ChromeProfile')
         self.get_profile(login)
 
     def get_profile(self, login: bool=True):
@@ -18,7 +18,7 @@ class GetProfile:
             elif system == 'Darwin':
                 self.chrome_path = r'"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"'
             else:
-                raise Exception("Unsupported operating system.")
+                self.chrome_path =r'"/usr/bin/google-chrome"'
             url = r"https://chat.openai.com"
             free_port = self.find_available_port()
             self.launch_chrome_with_remote_debugging(free_port, url)

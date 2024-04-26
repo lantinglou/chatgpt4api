@@ -796,7 +796,7 @@ files = [
 
 [[package]]
 name = "talkingheads"
-version = "0.6.0"
+version = "0.6.1"
 description = "A library to communicate with ChatGPT, Claude, Copilot, Gemini, HuggingChat, and Pi"
 optional = false
 python-versions = ">=3.8"
@@ -818,7 +818,7 @@ validators = ">=0.22.0"
 type = "git"
 url = "https://github.com/lantinglou/TalkingHeads.git"
 reference = "HEAD"
-resolved_reference = "3f283fedf62a8b13ba821207da9f0a4bdea27b04"
+resolved_reference = "35db2e9067389040561afe9a6a91f04cc9c90847"
 
 [[package]]
 name = "trio"
