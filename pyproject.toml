@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "chatgpt4api"
-version = "0.1.0"
+version = "0.1.1"
 description = "A selenium based chatgpt4 API, You need a chatgpt4 account and manual login first time."
 authors = ["lantinglou <679506@qq.com>"]
 readme = "README.md"
