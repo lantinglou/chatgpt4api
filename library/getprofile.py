@@ -44,12 +44,14 @@ class GetProfile:
         chrome_cmd = f"{self.chrome_path} --remote-debugging-port={port} --user-data-dir={self.profile_path} {url}"
         subprocess.Popen(chrome_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
-    def close_chrome(self):
-        """Closes the Chrome browser."""
+    def close_chrome():
+        """Closes the Chrome browser on Windows, macOS, and Linux."""
         try:
             if platform.system() == 'Windows':
                 subprocess.run("taskkill /F /IM chrome.exe /T", check=True, shell=True)
-            else:
+            elif platform.system() == 'Linux':
+                subprocess.run("killall chrome", check=True, shell=True)  # Linux often refers to it just as 'chrome'
+            elif platform.system() == 'Darwin':  # macOS is identified as 'Darwin'
                 subprocess.run("killall 'Google Chrome'", check=True, shell=True)
             print("Chrome browser has been closed successfully.")
         except subprocess.CalledProcessError as e:
