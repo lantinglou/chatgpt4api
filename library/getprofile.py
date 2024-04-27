@@ -44,7 +44,7 @@ class GetProfile:
         chrome_cmd = f"{self.chrome_path} --remote-debugging-port={port} --user-data-dir={self.profile_path} {url}"
         subprocess.Popen(chrome_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
-    def close_chrome():
+    def close_chrome(self):
         """Closes the Chrome browser on Windows, macOS, and Linux."""
         try:
             if platform.system() == 'Windows':
